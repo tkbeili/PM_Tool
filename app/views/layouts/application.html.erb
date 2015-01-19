@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PMTool</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav>
+      <div><%= link_to "Home", home_index_path %></div>
+      <div><%= link_to "About", home_about_path %></div>
+    </nav>
+  <%= yield %>
+
+  </body>
+</html>
