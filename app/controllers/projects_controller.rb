@@ -18,12 +18,21 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find params[:id]
   end
 
   def show
   end
 
   def update
+    @project = Project.find params[:id]
+    @project.update params.require(:project).permit(:title, :description, :due_date)
+    
+    if @project.save
+      redirect_to
+    else
+      render :edit
+    end
   end
 
   def destroy
