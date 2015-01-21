@@ -1,0 +1,17 @@
+<h1>Projects#new</h1>
+<p>Find me in app/views/projects/new.html.erb</p>
+
+<%= form_for(@project) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date %>
+  <br>
+  <%= f.submit %>
+  <%= f.button "Reset", type: :reset %>
+<% end %>
+  
