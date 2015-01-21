@@ -1,6 +1,14 @@
 <h1>Projects#new</h1>
 <p>Find me in app/views/projects/new.html.erb</p>
 
+<% if @project.errors.any? %>
+  <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+    <li><h3><%= msg %></h3></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for(@project) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
