@@ -22,6 +22,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find params[:id]
+    # render text: params
   end
 
   def update
