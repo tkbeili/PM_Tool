@@ -12,7 +12,7 @@
     </thead>
     <% @tasks.each do |task| %>
     <tr>
-      <td><%= task.title %></td>
+      <td><%= link_to task.title, edit_task_path(task) %></td>
       <td><%= task.due_date %></td>
       <td>In Progress</td>
     </tr>
