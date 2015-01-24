@@ -5,12 +5,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new params.require(:project).permit(:title, :description, :due_date)
-    if @project.save
-      redirect_to projects_path, notice: "Project Created"
-    else
-      render :new
-    end
-    # render text: params
+    # if @project.save
+    #   redirect_to projects_path, notice: "Project Created"
+    # else
+    #   render :new
+    # end
+    render text: params
   end
 
   def new

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # get 'tasks/index'
+  # get 'tasks/new'
+  # get 'tasks/create'
+  # get 'tasks/show'
+  # get 'tasks/edit'
+  # get 'tasks/update'
+  # get 'tasks/destroy'
+
   # get 'projects/index'
   # get 'projects/create'
   # get 'projects/new'
@@ -14,5 +22,6 @@ Rails.application.routes.draw do
   root "home#index"
   # resources :home # is this necessary?
   resources :projects
+  resources :tasks
 
 end
