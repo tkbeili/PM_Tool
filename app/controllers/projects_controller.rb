@@ -1,16 +1,24 @@
 class ProjectsController < ApplicationController
+
   def index
-    @projects = Project.all
+    # @projects = Project.all
+
+    if params[:search]
+      @projects = Project.search(params[:search]).order("created_at DESC")
+    else
+      @projects = Project.all.order('created_at DESC')
+    end
   end
+
 
   def create
     @project = Project.new params.require(:project).permit(:title, :description, :due_date)
-    # if @project.save
-    #   redirect_to projects_path, notice: "Project Created"
-    # else
-    #   render :new
-    # end
-    render text: params
+    if @project.save
+      redirect_to projects_path, notice: "Project Created"
+    else
+      render :new
+    end
+    # render text: params
   end
 
   def new
