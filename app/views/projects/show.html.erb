@@ -8,7 +8,24 @@
   <p><%= link_to "EDIT", edit_project_path(@project) %></p>
   <p><%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you use you want to delete this project?"} %></p>
 
+  <h3>Discussions</h3>
+  <% @project.discussions.each do |discussion| %>
+    <div class="well">
+    <h4><%= discussion.title %></h4>
+    <p><%= discussion.description %></p>
+  </div>
+  <% end %>
+
+
   <h4>Add a Discussion</h4>
+  <% if @discussion.errors.any? %>
+    <ul>
+      <% @discussion.errors.full_messages.each do |msg| %>
+      <li><h4><%= msg %></h4></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_for(@discussion, url: project_discussions_path(@project)) do |f| %>
     <div class="form-group">
       <%= f.label :title %>
@@ -17,6 +34,8 @@
       <%= f.text_area :description, class: "form-control" %>
     </div>
     <%= f.submit class: "btn btn-primary" %>
-  <% end %>   
+  <% end %> 
+  <br>
+  <br>  
 
     
