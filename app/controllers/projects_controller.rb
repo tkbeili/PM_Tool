@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
+    @discussion = @project.discussions.new
     # render text: params
   end
 

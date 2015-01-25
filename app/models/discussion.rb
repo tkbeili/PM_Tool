@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
-    validates :title, presence: true
-
+  belongs_to :project
+  validates :title, presence: true
 end
+
+

@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :discussions, dependent: :nullify
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   def self.search(query)

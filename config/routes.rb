@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   # get "/about" => "home#about" # Is this right?
   root "home#index"
   # resources :home # is this necessary?
-  resources :projects
+  resources :projects do
+    resources :discussions, only: [:create, :destroy]
+  end
+  
   resources :tasks
 
 end
