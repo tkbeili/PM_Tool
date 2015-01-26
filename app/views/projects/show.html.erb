@@ -10,8 +10,8 @@
 
   <h3>Discussions</h3>
   <% @project.discussions.each do |discussion| %>
-    <div class="well">
-    <h4><%= discussion.title %></h4>
+    <div class="well well-sm">
+    <h4><%= link_to discussion.title, [@project, discussion] %></h4>
     <p><%= discussion.description %></p>
   </div>
   <% end %>
