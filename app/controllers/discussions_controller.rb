@@ -23,8 +23,10 @@ class DiscussionsController < ApplicationController
   end
 
   def update
+    @discussion = Discussion.find params[:id]
     @discussion.update params.require(:discussion).permit(:title, :description)
-    redirect_to @discussion
+    redirect_to project_path(@discussion.project_id)
+    # render text: params
   end
 
   def destroy

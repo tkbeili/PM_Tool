@@ -6,7 +6,7 @@
     </ul>
   <% end %>
 
-  <%= form_for(@discussion, url: project_discussions_path(@project)) do |f| %>
+  <%= form_for([@project, @discussion]) do |f| %>
     <div class="form-group">
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>

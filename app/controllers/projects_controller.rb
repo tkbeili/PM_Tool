@@ -31,7 +31,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
-    @discussion = @project.discussions.new
+    # @discussion = Discussion.new(project: @project)
+    # same as above it removes the empty entry at the end
+    @discussion = Discussion.new(project_id: @project.id)
     # render text: params
   end
 
