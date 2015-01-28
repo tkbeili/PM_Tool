@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new params.require(:task).permit(:title, :due_date)
+    @task = Task.new params.require(:task).permit(:title, :details, :due_date)
     if @task.save
       redirect_to tasks_path
     else

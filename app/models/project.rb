@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :discussions, dependent: :nullify
   has_many :comments, through: :discussions
+  has_many :tasks, dependent: :destroy
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   def self.search(query)
