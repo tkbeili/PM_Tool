@@ -34,6 +34,14 @@ class CommentsController < ApplicationController
     # render text: params
   end
 
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy
+    redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    # render text: params
+  end
+
+
   private
 
   def comment_params
