@@ -8,11 +8,14 @@ class TasksController < ApplicationController
   end
 
   def create
+    @project = Project.find params[:project_id]
     @task = Task.new params.require(:task).permit(:title, :details, :due_date)
+    @task.project_id = params[:project_id]
     if @task.save
-      redirect_to tasks_path
+      redirect_to project_path(@project.id), notice: "Saved"
     else
-      render :new
+      redirect_to project_path(@project.id), notice: "Task not saved"
+      # render :new
     end
     # render text: params
   end

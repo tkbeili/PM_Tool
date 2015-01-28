@@ -33,7 +33,8 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     # @discussion = Discussion.new(project: @project)
     # same as above it removes the empty entry at the end
-    @discussion = Discussion.new(project_id: @project.id)
+    @discussion = Discussion.new #(project_id: @project.id)
+    @task = Task.new due_date: (Date.today + 1.day)
     # render text: params
   end
 
