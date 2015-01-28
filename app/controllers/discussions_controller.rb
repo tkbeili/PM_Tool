@@ -15,7 +15,6 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find params[:id]
     @project = Project.find params[:project_id]
-    
   end
 
   def edit

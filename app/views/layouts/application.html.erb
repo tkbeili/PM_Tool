@@ -44,11 +44,9 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <br>
-    <br>
     <div class="container">
+      <h1><%= flash[:notice] || flash[:error] %></h1>
       <%= yield %>
-      <h1><%= flash[:notice] || flash[:alert] %></h1>
     </div>  
   </body>
 </html>

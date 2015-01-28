@@ -9,10 +9,28 @@ class CommentsController < ApplicationController
       # redirect_to :back
       redirect_to project_discussion_path(@discussion.project, @discussion)
     else
-      flash[:error] = "Could not save..."
+      flash[:error] = "Body cannot be empty"
       redirect_to project_discussion_path(@discussion.project, @discussion)
     end
     # redirect_to :back
+    # render text: params
+  end
+
+  def edit
+    @discussion = Discussion.find params[:discussion_id]
+    @comment = Comment.find params[:id]
+    # render text: params
+  end
+
+  def update
+    @comment = Comment.find params[:id]
+    if @comment.update params.require(:comment).permit(:body)
+      # byebug
+      redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    else
+      flash[:error] = "Body cannot be empty"
+      redirect_to edit_discussion_comment_path(@comment.discussion, @comment)
+    end
     # render text: params
   end
 
