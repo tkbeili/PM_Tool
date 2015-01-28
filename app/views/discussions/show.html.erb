@@ -10,3 +10,22 @@
     <p><%= link_to "DELETE", project_discussion_path(@project, @discussion), method: :delete, data: {confirm: "Are you use you want to delete this Discussion?"} %></p>
   </div>
 </div>
+
+<%= form_for([@discussion, (@comment || Comment.new)]) do |f| %>
+  <div class="form-group">
+  <%= f.label :body %>
+  <%= f.text_field :body, class: "form-control" %>
+  <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+  
+
+<% @discussion.comments.each do |comment| %>
+  <div class="well well-sm">
+    <blockquote>
+      <p><%= comment.body %></p>
+      <p><%= link_to "edit",  %></p>
+      <p></p>
+    </blockquote>
+  </div>
+<% end  %>

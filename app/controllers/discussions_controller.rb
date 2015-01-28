@@ -15,6 +15,7 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find params[:id]
     @project = Project.find params[:project_id]
+    
   end
 
   def edit
@@ -24,8 +25,11 @@ class DiscussionsController < ApplicationController
 
   def update
     @discussion = Discussion.find params[:id]
-    @discussion.update params.require(:discussion).permit(:title, :description)
-    redirect_to project_path(@discussion.project_id)
+    if @discussion.update params.require(:discussion).permit(:title, :description)
+      redirect_to project_path(@discussion.project_id)
+    else
+      render :edit
+    end
     # render text: params
   end
 
