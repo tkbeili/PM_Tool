@@ -21,16 +21,27 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @project = Project.find params[:project_id]
     @task = Task.find params[:id]
   end
 
   def update
+    @project = Project.find params[:project_id]
     @task = Task.find params[:id]
+    
+    
+    if @task.update params.require(:task).permit(:title, :details, :due_date)
+      redirect_to project_path(@project), notice: "Task Updated"
+    else
+      redirect_to project_path(@project), notice: "Task Deleted"
+    end
+
   end
 
   def destroy
+    @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     @task.destroy
-    redirect_to tasks_path
+    redirect_to project_path(@project)
   end
 end
