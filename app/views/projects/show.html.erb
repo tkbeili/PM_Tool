@@ -26,31 +26,42 @@
 
 <div class="tasks-box">
   <% if @project.tasks.present? %>
-    <h3>Tasks</h3>
+    <h3>Tasks To Do</h3>
     <% @project.tasks.each do |task| %>
-      <div class="well well-sm">
-      <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
-      <p><%= task.details %></p>
-      <p><%= task.status %></p>
-      <p>
-      <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
-        <% if task.status? %>
-          <%= link_to " Done", project_task_path(@project, task, 
-            task: { status: false }), method: :patch, class: "glyphicon glyphicon-check btn btn-success" %>
-        <% else %>
-          <%= link_to " Not Done", project_task_path(@project, task, 
-            task: { status: true }), method: :patch, class: "right glyphicon glyphicon-fire btn btn-danger" %>
-        <% end %>
-      </p>
-    </div>
+      <% if task.status === false %>
+        <div class="well well-sm">
+          <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
+          <p><%= task.details %></p>
+
+          <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
+          <p><%= link_to " Incomplete", project_task_path(@project, task, 
+                task: { status: true }), method: :patch, class: "right glyphicon glyphicon-fire btn btn-danger" %></p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-
-  <h4>Add a Task</h4>
-
-  <%= render "tasks/form" %>
 </div>
 
+<div class="other-box">
+  <% if @project.tasks.present? %>
+    <h3>Completed Tasks</h3>
+    <% @project.tasks.each do |task| %>
+      <% if task.status === true %>
+        <div class="well well-sm">
+          <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
+          <p><%= task.details %></p>
+          <p><%= link_to " Completed", project_task_path(@project, task, 
+                task: { status: false }), method: :patch, class: "glyphicon glyphicon-check btn btn-success" %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="form-box">
+  <h4>Add a Task</h4>
+  <%= render "tasks/form" %>
+</div>
 
 
 
