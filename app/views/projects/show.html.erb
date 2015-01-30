@@ -32,6 +32,16 @@
       <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
       <p><%= task.details %></p>
       <p><%= task.status %></p>
+      <p>
+      <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
+        <% if task.status? %>
+          <%= link_to " Done", project_task_path(@project, task, 
+            task: { status: false }), method: :patch, class: "glyphicon glyphicon-check btn btn-success" %>
+        <% else %>
+          <%= link_to " Not Done", project_task_path(@project, task, 
+            task: { status: true }), method: :patch, class: "right glyphicon glyphicon-fire btn btn-danger" %>
+        <% end %>
+      </p>
     </div>
     <% end %>
   <% end %>

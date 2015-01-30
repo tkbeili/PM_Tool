@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   def create
     @project = Project.find params[:project_id]
-    @task = Task.new params.require(:task).permit(:title, :details, :due_date)
+    @task = Task.new params.require(:task).permit(:title, :details, :due_date, :status)
     @task.project_id = params[:project_id]
     if @task.save
       redirect_to project_path(@project.id), notice: "Saved"
@@ -28,9 +28,8 @@ class TasksController < ApplicationController
   def update
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
-    
-    
-    if @task.update params.require(:task).permit(:title, :details, :due_date)
+
+    if @task.update params.require(:task).permit(:title, :details, :due_date, :status)
       redirect_to project_path(@project), notice: "Task Updated"
     else
       redirect_to project_path(@project), notice: "Task Deleted"
