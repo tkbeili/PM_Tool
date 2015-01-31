@@ -17,6 +17,7 @@ gem 'thin'
 gem 'will_paginate'
 gem "font-awesome-rails"
 gem "animate-rails"
+gem 'devise'
 
 group :development do
   gem 'colorize'

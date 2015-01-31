@@ -39,7 +39,31 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <% if user_signed_in? == false%>
+                <%= link_to "Sign In", new_user_session_path %> 
+              <% else %>
+                <%= "Hi #{current_user.first_name}!" %>
+              <% end %>
+              <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li>
+                  <% if user_signed_in? %>
+                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li></li>
+            <li class="active"><span class="sr-only">(current)</span></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

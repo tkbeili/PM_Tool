@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   get "home/about" => "home#about"
   # get "/about" => "home#about" # Is this right?
   root "home#index"
