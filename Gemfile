@@ -15,6 +15,8 @@ gem 'bootstrap-sass'
 gem 'rails_12factor', group: :production
 gem 'thin'
 gem 'will_paginate'
+gem "font-awesome-rails"
+gem "animate-rails"
 
 group :development do
   gem 'colorize'
