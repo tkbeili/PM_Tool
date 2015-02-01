@@ -4,6 +4,7 @@ class DiscussionsController < ApplicationController
     @project = Project.find params[:project_id]
     @discussion = Discussion.new params.require(:discussion).permit(:title, :description)
     @discussion.project_id = params[:project_id]
+    @discussion.user = current_user
     if @discussion.save
       redirect_to project_path(@project)
     else
@@ -34,8 +35,11 @@ class DiscussionsController < ApplicationController
 
   def destroy
     @discussion = Discussion.find params[:id]
-    @discussion.destroy
-    redirect_to project_path(@discussion.project_id)
+    if @discussion.user == current_user && @discussion.destroy
+      redirect_to project_path(@discussion.project_id), notice: "Discussion Deleted"
+    else
+      redirect_to project_path(@discussion.project_id), error: "You cannot delete this Discussion"
+    end 
   end
 
 end

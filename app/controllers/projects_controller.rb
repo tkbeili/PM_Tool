@@ -53,7 +53,12 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find params[:id]
-    @project.destroy
-    redirect_to projects_path, notice: "Project Deleted"
+    if @project.user == current_user && @project.destroy
+      redirect_to projects_path, notice: "Project Deleted"
+    else
+      redirect_to projects_path, notice: "You cannot delete a project that is not yours."
+    end
   end
+
+
 end

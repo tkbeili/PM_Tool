@@ -69,7 +69,7 @@
       </div>
     </nav>
     <div class="container">
-      <h1><%= flash[:notice] || flash[:error] %></h1>
+      <h1><%= flash[:notice] || flash[:error] || flash[:alert] %></h1>
       <%= yield %>
     </div>  
   </body>

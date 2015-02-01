@@ -4,6 +4,7 @@
   </div>
   <div class="panel-body">
     <p><%= @discussion.description %></p>
+    <p>Created By: <%= @discussion.user_first_name %></p>
     <p><%= link_to "EDIT", edit_project_discussion_path(@project, @discussion) %></p>
     <!-- Same as above -->
     <!-- <p><%#= link_to "EDIT", [:edit, @project, @discussion] %></p> -->
