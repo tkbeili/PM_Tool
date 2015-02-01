@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :discussions
     resources :tasks
+    resources :favourites, only: [:create, :destroy]
   end
 
   resources :discussions do

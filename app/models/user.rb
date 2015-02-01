@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :favourited_projects, through: :favourites, source: :project
 
+  def has_favourited?(project)
+    favourited_projects.include? project
+  end
+
 end
