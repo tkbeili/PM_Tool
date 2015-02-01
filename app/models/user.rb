@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :discussions, dependent: :nullify
   has_many :comments, dependent: :destroy
   has_many :tasks, dependent: :nullify
+
+  has_many :favourites, dependent: :destroy
+  has_many :favourited_projects, through: :favourites, source: :project
+
 end
