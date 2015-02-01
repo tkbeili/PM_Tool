@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new params.require(:project).permit(:title, :description, :due_date)
+    @project.user = current_user
     if @project.save
       redirect_to projects_path, notice: "Project Created"
     else
