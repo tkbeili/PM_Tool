@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   get "home/about" => "home#about"
   # get "/about" => "home#about" # Is this right?
   root "home#index"
