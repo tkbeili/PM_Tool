@@ -38,7 +38,7 @@ class DiscussionsController < ApplicationController
     if @discussion.user == current_user && @discussion.destroy
       redirect_to project_path(@discussion.project_id), notice: "Discussion Deleted"
     else
-      redirect_to project_path(@discussion.project_id), error: "You cannot delete this Discussion"
+      redirect_to project_path(@discussion.project_id), notice: "You cannot delete this Discussion"
     end 
   end
 

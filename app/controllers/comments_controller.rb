@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     @discussion = Discussion.find(params[:discussion_id])
     @comment = Comment.new params.require(:comment).permit(:body)
+    @comment.user = current_user
     @comment.discussion_id = @discussion.id
     
     if @comment.save
@@ -36,8 +37,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find params[:id]
-    @comment.destroy
-    redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    if @comment.user == current_user && @comment.destroy
+      redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    else
+      flash[:error] = "You cannot delete a comment you did not create"
+      redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    end
     # render text: params
   end
 

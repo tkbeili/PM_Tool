@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :projects, dependent: :nullify
   has_many :discussions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
