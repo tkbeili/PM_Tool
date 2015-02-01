@@ -29,7 +29,7 @@
   <% if @project.tasks.present? %>
     <h3>Tasks To Do</h3>
     <% @project.tasks.each do |task| %>
-      <% if task.status === false %>
+      <% if task.status == false %>
         <div class="well well-sm">
           <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
           <p><%= task.details %></p>
