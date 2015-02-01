@@ -33,7 +33,7 @@
         <div class="well well-sm">
           <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
           <p><%= task.details %></p>
-
+          <p>Task Initiated By: <%= task.user_first_name %></p>
           <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
           <p><%= link_to " Incomplete", project_task_path(@project, task, 
                 task: { status: true }), method: :patch, class: "right glyphicon glyphicon-fire btn btn-danger" %></p>
@@ -51,6 +51,7 @@
         <div class="well well-sm">
           <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
           <p><%= task.details %></p>
+          <p>Task Initiated By: <%= task.user_first_name %></p>
           <p><%= link_to " Completed", project_task_path(@project, task, 
                 task: { status: false }), method: :patch, class: "glyphicon glyphicon-check btn btn-success" %></p>
         </div>
