@@ -1,6 +1,10 @@
 class FavouritesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @favourites = current_user.favourites
+  end
+
   def create
     @project = Project.find params[:project_id]
     @favourite = @project.favourites.new
