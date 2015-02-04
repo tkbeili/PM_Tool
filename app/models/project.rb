@@ -6,6 +6,9 @@ class Project < ActiveRecord::Base
 
   has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
+
+  has_many :members, dependent: :destroy
+  has_many :project_members, through: :members, source: :user
   
   validates :title, presence: true, uniqueness: { case_sensitive: false }
 
