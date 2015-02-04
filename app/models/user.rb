@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
     favourited_projects.include? project
   end
 
+  def full_name
+    if first_name || last_name
+      "#{first_name} #{last_name}".squeeze(" ").strip
+    else
+      email
+    end
+  end
+
 end

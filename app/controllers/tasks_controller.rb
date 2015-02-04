@@ -15,7 +15,8 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to project_path(@project.id), notice: "Saved"
     else
-      redirect_to project_path(@project.id), error: "Task not saved"
+      flash[:error] = "Task Not Updated. Title must be present and unique"
+      redirect_to project_path(@project.id)
       # render :new
     end
     # render text: params
@@ -33,7 +34,7 @@ class TasksController < ApplicationController
     if @task.update params.require(:task).permit(:title, :details, :due_date, :status)
       redirect_to project_path(@project), notice: "Task Updated"
     else
-      flash[:error] = "Task Not Updated"
+      flash[:error] = "Task Not Updated. Title must be present and unique"
       redirect_to project_path(@project)
     end
 

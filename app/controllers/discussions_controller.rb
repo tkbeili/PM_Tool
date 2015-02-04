@@ -38,7 +38,8 @@ class DiscussionsController < ApplicationController
     if @discussion.user == current_user && @discussion.destroy
       redirect_to project_path(@discussion.project_id), notice: "Discussion Deleted"
     else
-      redirect_to project_path(@discussion.project_id), notice: "You cannot delete this Discussion"
+      flash[:error] = "You cannot delete a discussion that is not yours"
+      redirect_to project_path(@discussion.project_id)
     end 
   end
 

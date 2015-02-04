@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
 
   def create
-    @project = Project.new params.require(:project).permit(:title, :description, :due_date)
+    @project = Project.new params.require(:project).permit(:title, :description, :due_date, {project_member_ids: []})
     @project.user = current_user
     if @project.save
       redirect_to projects_path, notice: "Project Created"
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find params[:id]
-    @project.update params.require(:project).permit(:title, :description, :due_date)
+    @project.update params.require(:project).permit(:title, :description, :due_date, {project_member_ids: []})
     
     if @project.save
       redirect_to projects_path, notice: "Project Updated"
@@ -59,6 +59,5 @@ class ProjectsController < ApplicationController
       redirect_to projects_path, flash: {error: "You cannot delete a project that is not yours."}
     end
   end
-
 
 end

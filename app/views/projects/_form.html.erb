@@ -23,6 +23,11 @@
   </div>
   <br>
   <div class="form-group">
+    <%= f.label :project_member_ids %>
+    <%= f.collection_check_boxes :project_member_ids, User.all, :id, :full_name %>
+  </div>
+  <br>
+  <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
     <%= f.button "Reset", type: :reset, class: "btn btn-info" %>
   </div>
