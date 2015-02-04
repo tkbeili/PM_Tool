@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
     if @project.user == current_user && @project.destroy
       redirect_to projects_path, notice: "Project Deleted"
     else
-      redirect_to projects_path, notice: "You cannot delete a project that is not yours."
+      redirect_to projects_path, flash: {error: "You cannot delete a project that is not yours."}
     end
   end
 

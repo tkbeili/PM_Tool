@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -41,36 +41,40 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <% if user_signed_in? == false%>
-                <%= link_to "Sign In", new_user_session_path %> 
+              <% if user_signed_in? %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <%= "Hi #{current_user.first_name}!" %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li>
+                    <% if user_signed_in? %>
+                      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                    <% end %>
+                  </li>
+                </ul>
               <% else %>
-                <%= "Hi #{current_user.first_name}!" %>
+                <%= link_to "Sign In", new_user_session_path %>
               <% end %>
-              <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li>
-                <% if user_signed_in? %>
-                  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-                <% end %>
-                </li>
-              </ul>
             </li>
-            <li></li>
-            <li class="active"><span class="sr-only">(current)</span></li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container">
-      <h1 class="animated bounce infinite"><%= flash[:notice] || flash[:error] || flash[:alert] %></h1>
+      <h1> HELLO </h1>
+      <%= flash.inspect %>
+      <% flash.each do |key, value| %>
+        <h1 class="animated bounce infinite flash-<%= key %>"><%= value %></h1>
+      <% end %>
+      <h1>After</h1>
       <%= yield %>
     </div>  
   </body>

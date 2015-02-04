@@ -32,8 +32,8 @@
   <%= render "discussions/form" %>
 </div>
 
-<div class="tasks-box">
-  <% if @project.tasks.present? %>
+<% if @project.tasks.any? %>
+  <div class="tasks-box">
     <h3>Tasks To Do</h3>
     <% @project.tasks.each do |task| %>
       <% if task.status == false %>
@@ -47,11 +47,10 @@
         </div>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
-<div class="other-box">
-  <% if @project.tasks.present? %>
+  <div class="other-box">
     <h3>Completed Tasks</h3>
     <% @project.tasks.each do |task| %>
       <% if task.status === true %>
@@ -64,8 +63,8 @@
         </div>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div class="form-box">
   <h4>Add a Task</h4>
