@@ -69,12 +69,9 @@
       </div>
     </nav>
     <div class="container">
-      <h1> HELLO </h1>
-      <%= flash.inspect %>
       <% flash.each do |key, value| %>
-        <h1 class="animated bounce infinite flash-<%= key %>"><%= value %></h1>
+        <h1 class="animated bounce infinite"><%= value %></h1>
       <% end %>
-      <h1>After</h1>
       <%= yield %>
     </div>  
   </body>
