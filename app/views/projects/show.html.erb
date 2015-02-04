@@ -7,18 +7,20 @@
 <p><%= @project.due_date %></p>
 <p>Created By: <%= @project.user_first_name %></p>
 
-<% if user_signed_in? && current_user.has_favourited?(@project) %>
-  <% @favourite = current_user.favourites.find_by_project_id(@project.id) %>
-  <%= link_to "NO Favourite", project_favourite_path(@project, @favourite), class: "btn btn-danger", method: :delete%>
-<% else %>
-  <%= link_to "Favourite", project_favourites_path(@project), class: "btn btn-info", method: :post%>
+<% unless @project.user == current_user %>
+  <% if user_signed_in? && current_user.has_favourited?(@project) %>
+    <% favourite = current_user.favourites.find_by_project_id(@project.id) %>
+    <%= link_to "NO Favourite", project_favourite_path(@project, favourite), class: "btn btn-danger", method: :delete%>
+  <% else %>
+    <%= link_to "Favourite", project_favourites_path(@project), class: "btn btn-info", method: :post%>
+  <% end %>
 <% end %>
 
 <p><%= link_to "EDIT", edit_project_path(@project) %></p>
 <p><%= link_to "DELETE", project_path(@project), method: :delete, data: {confirm: "Are you use you want to delete this project?"} %></p>
 
 <div class="discussions-box">
-  <% if @project.discussions.present? %>
+  <% if @project.discussions.any? %>
     <h3>Discussions</h3>
     <% @project.discussions.each do |discussion| %>
       <div class="well well-sm">
@@ -50,6 +52,7 @@
   </div>
 <% end %>
 
+<% if @project.tasks.any? %>
   <div class="other-box">
     <h3>Completed Tasks</h3>
     <% @project.tasks.each do |task| %>
