@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem "font-awesome-rails"
 gem "animate-rails"
 gem 'devise'
+gem 'actionmailer', '~> 4.2.0'
 
 group :development do
   gem 'colorize'

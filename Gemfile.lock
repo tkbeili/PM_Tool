@@ -193,6 +193,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer (~> 4.2.0)
   animate-rails
   awesome_print
   bootstrap-sass
