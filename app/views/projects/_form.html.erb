@@ -23,6 +23,11 @@
   </div>
   <br>
   <div class="form-group">
+    <%= f.label :tag_ids %>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+  </div>
+  <br>
+  <div class="form-group">
     <%= f.label :project_member_ids %>
     <%= f.collection_check_boxes :project_member_ids, User.all, :id, :full_name %>
   </div>

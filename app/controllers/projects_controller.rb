@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
 
   def create
-    @project = Project.new params.require(:project).permit(:title, :description, :due_date, {project_member_ids: []})
+    @project = Project.new params.require(:project).permit(:title, :description, :due_date, {tag_ids: []}, {project_member_ids: []})
     @project.user = current_user
     if @project.save
       redirect_to projects_path, notice: "Project Created"
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find params[:id]
-    @project.update params.require(:project).permit(:title, :description, :due_date, {project_member_ids: []})
+    @project.update params.require(:project).permit(:title, :description, :due_date, {tag_ids: []}, {project_member_ids: []})
     
     if @project.save
       redirect_to projects_path, notice: "Project Updated"
