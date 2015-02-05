@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.discussion_id = @discussion.id
     
     if @comment.save
+      DiscussionMailer.notify_discussion_owner(@comment).deliver_now
       # redirect_to :back
       redirect_to project_discussion_path(@discussion.project, @discussion)
     else

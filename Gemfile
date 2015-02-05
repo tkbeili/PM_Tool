@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem "font-awesome-rails"
 gem "animate-rails"
 gem 'devise'
+
 gem 'actionmailer', '~> 4.2.0'
 
 group :development do
@@ -27,6 +28,7 @@ group :development do
   gem 'awesome_print'
   gem 'quiet_assets'
   gem 'faker'
+  gem 'letter_opener'
 end
 
 group :development, :test do
