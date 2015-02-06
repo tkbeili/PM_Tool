@@ -7,13 +7,12 @@ class CommentsController < ApplicationController
     @comment.discussion_id = @discussion.id
     
     
-    if @discussion.user == current_user
-      flash[:error] = "You cant comment on your own discussion"
+    if (@comment.save) && (@discussion.user == current_user)
       redirect_to project_discussion_path(@discussion.project, @discussion)
     elsif @comment.save
       DiscussionMailer.notify_discussion_owner(@comment).deliver_now
-      # redirect_to :back
       redirect_to project_discussion_path(@discussion.project, @discussion)
+      # redirect_to :back
     else
       flash[:error] = "Body cannot be empty"
       redirect_to project_discussion_path(@discussion.project, @discussion)
