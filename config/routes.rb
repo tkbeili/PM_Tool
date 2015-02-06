@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "home/about" => "home#about"
   root "home#index"
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   resources :favourites, only: [:index]
 
   resources :projects do

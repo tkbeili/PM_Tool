@@ -20,6 +20,8 @@ gem "animate-rails"
 gem 'devise'
 
 gem 'actionmailer', '~> 4.2.0'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
 
 group :development do
   gem 'colorize'

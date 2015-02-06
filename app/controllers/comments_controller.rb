@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if (@comment.save) && (@discussion.user == current_user)
       redirect_to project_discussion_path(@discussion.project, @discussion)
     elsif @comment.save
-      DiscussionMailer.notify_discussion_owner(@comment).deliver_now
+      DiscussionMailer.notify_discussion_owner(@comment).deliver_later
       redirect_to project_discussion_path(@discussion.project, @discussion)
       # redirect_to :back
     else

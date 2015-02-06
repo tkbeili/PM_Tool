@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
     if @task.update params.require(:task).permit(:title, :details, :due_date, :status)
       if (@task.status == true) && (@task.user != current_user)
-        TaskMailer.notify_task_owner(@task).deliver_now
+        TaskMailer.notify_task_owner(@task).deliver_later
       end
       redirect_to project_path(@project), notice: "Task Updated"
     else
