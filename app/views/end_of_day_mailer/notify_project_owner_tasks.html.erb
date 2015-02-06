@@ -1,0 +1,11 @@
+<p>Hello <%= @user.first_name %>,</p>
+
+<p>Here are the new tasks that were created today for your project.</p>
+
+<% @tasks.each do |task| %>
+<p><%= task.title %></p>
+<% end %>
+
+<p>Cheers,</p>
+
+<p>The Tool PM</p>
