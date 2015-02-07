@@ -1,15 +1,12 @@
 Hello <%= @user.first_name %>,
 
+<% if @tasks.count > 0 %>
 Here are the new tasks that were created today for your projects.
-
-  <% @tasks.each do |task| %>
-    <% if task.project.user_id ==  @user.id %>
-      <%= task.project.title %>
-      <%= task.title %>
-      <% end %>
-
-  <% end %>
-
+<% @tasks.each do |task| %>
+  Task: <%= task.title %>, for Project: <%= task.project.title %>.
+<% end %>
+<% else %>
+Sorry, you do not have any upadates on your projects.
+<% end %>
 Cheers,
-
 The Tool PM

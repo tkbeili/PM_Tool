@@ -1,0 +1,14 @@
+Hello <%= @user.first_name %>,
+<% if @discussions.count > 0 %>
+Here are the new discussions that were created today for your projects.</p>
+
+<% @discussions.each do |discussion| %>
+  Project: <%= discussion.project.title %>
+  Task: <%= discussion.title %>
+<% end %>
+
+<% else %>
+Sorry, you do not have any upadates on your projects.
+<% end %>
+Cheers,
+The Tool PM
