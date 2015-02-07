@@ -5,11 +5,15 @@ class DiscussionsController < ApplicationController
     @discussion = Discussion.new params.require(:discussion).permit(:title, :description)
     @discussion.project_id = params[:project_id]
     @discussion.user = current_user
-    if @discussion.save
-      redirect_to project_path(@project), notice: "Discussion created"
-    else
-      redirect_to project_path(@project), notice: "Title and Body must be present"
-      # render text: params
+    respond_to do |format|
+      if @discussion.save
+        format.html {redirect_to project_path(@project), notice: "Discussion Created"}
+        format.js {render}
+      else
+        format.html {project_path(@project)}
+        format.js {render}
+        # render text: params
+      end
     end
   end
 

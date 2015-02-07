@@ -16,6 +16,7 @@
 <% end %>
 <br>
 
+<!-- Favourite Button -->
 <% unless @project.user == current_user %>
   <% if user_signed_in? && current_user.has_favourited?(@project) %>
     <% favourite = current_user.favourites.find_by_project_id(@project.id) %>
@@ -27,21 +28,31 @@
 <p><%= link_to "EDIT", edit_project_path(@project), class: "btn btn-info" %></p>
 <p><%= link_to "DELETE", project_path(@project), method: :delete, data: {confirm: "Are you use you want to delete this project?"}, class: "btn btn-danger" %></p>
 
-<div class="discussions-box">
+<!-- Discussion -->
+<!-- <div class="discussions-box"> -->
+  <h3>Add a Discussion</h3>
+  <div class="discussion-form">
+    <%= render "discussions/form" %>
+  </div>
   <% if @project.discussions.any? %>
     <h3>Discussions</h3>
-    <% @project.discussions.each do |discussion| %>
-      <div class="well well-sm">
-      <h4><%= link_to discussion.title, [@project, discussion] %></h4>
-      <p><%= discussion.description %></p>
-    </div>
-    <% end %>
-  <% end %>
+    <div class="discussions">
+      <% @project.discussions.each do |discussion| %>
 
-  <h4>Add a Discussion</h4>
-  <%= render "discussions/form" %>
+      <%= render partial: "/discussions/discussion", locals: {discussion: discussion} %>
+
+      <% end %>
+    </div>
+  <% end %>
+<!-- </div> -->
+
+
+<div class="form-box">
+  <h3>Add a Task</h3>
+  <%= render "tasks/form" %>
 </div>
 
+<!-- Tasks 1 -->
 <% if @project.tasks.any? %>
   <div class="tasks-box">
     <h3>Tasks To Do</h3>
@@ -60,6 +71,7 @@
   </div>
 <% end %>
 
+<!-- Tasks Done -->
 <% if @project.tasks.any? %>
   <div class="other-box">
     <h3>Completed Tasks</h3>
@@ -77,10 +89,6 @@
   </div>
 <% end %>
 
-<div class="form-box">
-  <h4>Add a Task</h4>
-  <%= render "tasks/form" %>
-</div>
 
 
 

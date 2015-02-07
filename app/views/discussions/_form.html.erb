@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for([@project, @discussion]) do |f| %>
+<%= simple_form_for([@project, @discussion], remote: true) do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>

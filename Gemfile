@@ -23,6 +23,8 @@ gem 'actionmailer', '~> 4.2.0'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 
+gem 'simple_form'
+
 group :development do
   gem 'colorize'
   gem 'interactive_editor'
