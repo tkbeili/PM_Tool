@@ -15,13 +15,11 @@ namespace :discussion_task_emailer do
     EndOfDayMailer.notify_project_owner_tasks(tasks, user).deliver_now if tasks.count > 0
   end
 
-    # for each project, loop over project members where pm equals a member
-    #   find the tasks on that project that were created today
-    #   call end of day mailer notify project owner with the tasks, where pm is the project owner?
-    #
+  # for each project, loop over project members where pm equals a member
+  #   find the tasks on that project that were created today
+  #   call end of day mailer notify project owner with the tasks, where pm is the project owner?
+  #
   # end
-
-  # Project.all.each do |project|
 
 
   # EndOfDayMailer.notify_project_owner_discussions(@discussions).deliver_now

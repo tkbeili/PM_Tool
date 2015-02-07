@@ -2,7 +2,13 @@ class EndOfDayMailer < ApplicationMailer
   def notify_project_owner_tasks(tasks, user)
     @tasks = tasks
     @user  = user
-    mail to: @user.email, subject: "New Tasks from #{Date.today}"
+    mail to: @user.email, subject: "Tasks update for #{Date.today}."
+  end
+
+  def notify_project_owner_discussions(discussions, user)
+    @discussions = discussions
+    @user  = user
+    mail to: @user.email, subject: "Discussions update for #{Date.today}."
   end
 
   # def notify_project_owner_discussions(discussions)

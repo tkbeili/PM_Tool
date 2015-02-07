@@ -6,9 +6,9 @@ class DiscussionsController < ApplicationController
     @discussion.project_id = params[:project_id]
     @discussion.user = current_user
     if @discussion.save
-      redirect_to project_path(@project)
+      redirect_to project_path(@project), notice: "Discussion created"
     else
-      render "projects/show"
+      redirect_to project_path(@project), notice: "Title and Body must be present"
       # render text: params
     end
   end
