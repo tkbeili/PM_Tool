@@ -39,12 +39,15 @@ class DiscussionsController < ApplicationController
 
   def destroy
     @discussion = Discussion.find params[:id]
-    if @discussion.user == current_user && @discussion.destroy
-      redirect_to project_path(@discussion.project_id), notice: "Discussion Deleted"
-    else
-      flash[:error] = "You cannot delete a discussion that is not yours."
-      redirect_to project_path(@discussion.project_id)
-    end 
+    respond_to do |format|
+      if @discussion.user == current_user && @discussion.destroy
+        format.js {render}
+        format.html {redirect_to project_path(@discussion.project_id), notice: "Discussion Deleted"}
+      else
+        format.js {render js: "alert('Cannon Delete a Discussion you did not create');"}
+        format.html {redirect_to project_path(@discussion.project_id), flash[:error] = "You cannot delete a discussion that is not yours."}
+      end
+    end
   end
 
 end
