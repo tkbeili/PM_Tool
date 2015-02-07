@@ -10,11 +10,9 @@
     <th>Task</th>
   </tr>
   <% @tasks.each do |task| %>
-    <% if task.project.user_id ==  @user.id %>
     <tr>
       <td><%= task.project.title %></td>
       <td><%= task.title %></td>
-      <% end %>
     </tr>
   <% end %>
 </table>
