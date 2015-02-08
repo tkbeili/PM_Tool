@@ -39,11 +39,11 @@ class TasksController < ApplicationController
         if (@task.status == true) && (@task.user != current_user)
           TaskMailer.notify_task_owner(@task).deliver_later
         end
-        # format.html {redirect_to project_path(@project), notice: "Task Updated"}
+        format.html {redirect_to project_path(@project), notice: "Task Updated"}
         format.js {render}
       else
         flash[:error] = "Task Not Updated. Title must be present and unique"
-        # format.html {redirect_to project_path(@project)}
+        format.html {redirect_to project_path(@project)}
         format.js {render}
       end
     end

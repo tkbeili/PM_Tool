@@ -6,19 +6,22 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.discussion_id = @discussion.id
     
-    
-    if (@comment.save) && (@discussion.user == current_user)
-      redirect_to project_discussion_path(@discussion.project, @discussion)
-    elsif @comment.save
-      DiscussionMailer.notify_discussion_owner(@comment).deliver_later
-      redirect_to project_discussion_path(@discussion.project, @discussion)
+    respond_to do |format|
+      if (@comment.save)
+        if (@discussion.user != current_user)
+          DiscussionMailer.notify_discussion_owner(@comment).deliver_later
+        end
+        format.html {redirect_to project_discussion_path(@discussion.project, @discussion), notice: "Comment Created!"}
+        format.js {render}
+        # redirect_to :back
+      else
+        # flash[:error] = "Body cannot be empty"
+        format.html {redirect_to project_discussion_path(@discussion.project, @discussion)}
+        format.js {render js: "alert('Body cannot be empty');"}
+      end
       # redirect_to :back
-    else
-      flash[:error] = "Body cannot be empty"
-      redirect_to project_discussion_path(@discussion.project, @discussion)
+      # render text: params
     end
-    # redirect_to :back
-    # render text: params
   end
 
   def edit
