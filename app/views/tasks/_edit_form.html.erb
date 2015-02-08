@@ -1,0 +1,23 @@
+<% if @task.errors.any? %>
+  <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="well form-group">
+  <%= form_for [@project, @task] do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+    <%= f.label :details %><br>
+    <%= f.text_area :details, class: "form-control" %>
+    <%= f.label :due_date %><br>
+    <%= f.date_field :due_date %><br><br>
+    <%= f.submit "Submit", class: "btn btn-primary btn-sm", method: :patch %>
+    <%= f.button "Reset", class: "btn btn-info btn-sm", type: :reset %>
+  <% end %>
+    <% if @task.persisted? %>
+      <%= button_to('Destroy', project_task_path(@project, @task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm") %>
+    <% end %>
+</div>

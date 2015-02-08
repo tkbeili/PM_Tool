@@ -54,7 +54,7 @@
 </div>
 
 <!-- Tasks 1 -->
-<% if @project.tasks.any? %>
+<%# if @project.tasks.any? %>
   <div class="tasks-box">
     <h3>Tasks To Do</h3>
     <div class="incomplete">
@@ -63,25 +63,19 @@
       <% end %>
     </div>
   </div>
-<% end %>
+<%# end %>
 
 <!-- Tasks Done -->
-<% if @project.tasks.any? %>
+<%# if @project.tasks.any? %>
   <div class="other-box">
     <h3>Completed Tasks</h3>
-    <% @project.tasks.each do |task| %>
-      <% if task.status === true %>
-        <div class="well well-sm">
-          <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
-          <p><%= task.details %></p>
-          <p>Task Initiated By: <%= task.user_first_name %></p>
-          <p><%= link_to " Completed", project_task_path(@project, task, 
-                task: { status: false }), method: :patch, class: "glyphicon glyphicon-check btn btn-success" %></p>
-        </div>
+    <div class="complete">
+      <% @project.tasks.each do |task| %>
+        <%= render partial: "/tasks/complete", locals: {task: task} %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-<% end %>
+<%# end %>
 
 
 

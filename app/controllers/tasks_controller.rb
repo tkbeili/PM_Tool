@@ -17,12 +17,13 @@ class TasksController < ApplicationController
         format.js {render}
         format.html {redirect_to project_path(@project.id), notice: "Saved"}
       else
+        flash[:error] = "Task Not Updated. Title must be present and unique"
         format.js {render}
-        format.html {redirect_to project_path(@project.id), flash[:error] = "Task Not Updated. Title must be present and unique"}
+        format.html {redirect_to project_path(@project.id)}
         # render :new
       end
       # render text: params
-  end
+    end
   end
 
   def edit
@@ -33,17 +34,19 @@ class TasksController < ApplicationController
   def update
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
-
-    if @task.update params.require(:task).permit(:title, :details, :due_date, :status)
-      if (@task.status == true) && (@task.user != current_user)
-        TaskMailer.notify_task_owner(@task).deliver_later
+    respond_to do |format|
+      if @task.update params.require(:task).permit(:title, :details, :due_date, :status)
+        if (@task.status == true) && (@task.user != current_user)
+          TaskMailer.notify_task_owner(@task).deliver_later
+        end
+        # format.html {redirect_to project_path(@project), notice: "Task Updated"}
+        format.js {render}
+      else
+        flash[:error] = "Task Not Updated. Title must be present and unique"
+        # format.html {redirect_to project_path(@project)}
+        format.js {render}
       end
-      redirect_to project_path(@project), notice: "Task Updated"
-    else
-      flash[:error] = "Task Not Updated. Title must be present and unique"
-      redirect_to project_path(@project)
     end
-
   end
 
   def destroy
