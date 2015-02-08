@@ -1,5 +1,5 @@
 <div id="<%= dom_id(task) %>">
-  <% if task.status == false %>
+  <% unless task.status == true %>
     <div class="well well-sm">
       <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
       <p><%= task.details %></p>
