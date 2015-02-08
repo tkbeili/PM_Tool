@@ -7,7 +7,7 @@
 <% end %>
 
 <div class="well form-group">
-  <%= form_for [@project, @task] do |f| %>
+  <%= form_for [@project, @task], remote: true do |f| %>
     <%= f.label :title %><br>
     <%= f.text_field :title, class: "form-control" %>
     <%= f.label :details %><br>

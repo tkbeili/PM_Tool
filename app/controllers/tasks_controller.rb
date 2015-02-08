@@ -12,14 +12,17 @@ class TasksController < ApplicationController
     @task = Task.new params.require(:task).permit(:title, :details, :due_date, :status)
     @task.user = current_user
     @task.project_id = params[:project_id]
-    if @task.save
-      redirect_to project_path(@project.id), notice: "Saved"
-    else
-      flash[:error] = "Task Not Updated. Title must be present and unique"
-      redirect_to project_path(@project.id)
-      # render :new
-    end
-    # render text: params
+    respond_to do |format|
+      if @task.save
+        format.js {render}
+        format.html {redirect_to project_path(@project.id), notice: "Saved"}
+      else
+        format.js {render}
+        format.html {redirect_to project_path(@project.id), flash[:error] = "Task Not Updated. Title must be present and unique"}
+        # render :new
+      end
+      # render text: params
+  end
   end
 
   def edit

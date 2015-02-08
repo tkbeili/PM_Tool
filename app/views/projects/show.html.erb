@@ -46,28 +46,22 @@
   <% end %>
 </div>
 
-
 <div class="form-box">
   <h3>Add a Task</h3>
-  <%= render "tasks/form" %>
+  <div class='task-form'>
+    <%= render "tasks/form" %>
+  </div>
 </div>
 
 <!-- Tasks 1 -->
 <% if @project.tasks.any? %>
   <div class="tasks-box">
     <h3>Tasks To Do</h3>
-    <% @project.tasks.each do |task| %>
-      <% if task.status == false %>
-        <div class="well well-sm">
-          <h4><%= link_to task.title, edit_project_task_path(@project, task) %></h4>
-          <p><%= task.details %></p>
-          <p>Task Initiated By: <%= task.user_first_name %></p>
-          <!-- <span class="glyphicon glyphicon-check" aria-hidden="true"></span> -->
-          <p><%= link_to " Incomplete", project_task_path(@project, task, 
-                task: { status: true }), method: :patch, class: "right glyphicon glyphicon-fire btn btn-danger" %></p>
-        </div>
+    <div class="incomplete">
+      <% @project.tasks.each do |task| %>
+        <%= render partial: "/tasks/incomplete", locals: {task: task} %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 <% end %>
 
