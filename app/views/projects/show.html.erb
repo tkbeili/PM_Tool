@@ -34,7 +34,7 @@
   <div class="discussion-form">
     <%= render "discussions/form" %>
   </div>
-  <% if @project.discussions.any? %>
+  <%# if @project.discussions.any? %>
     <h3>Discussions</h3>
     <div class="discussions">
       <% @project.discussions.each do |discussion| %>
@@ -43,7 +43,7 @@
 
       <% end %>
     </div>
-  <% end %>
+  <%# end %>
 </div>
 
 <div class="form-box">
