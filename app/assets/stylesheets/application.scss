@@ -13,7 +13,12 @@ $headings-font-family: 'Marcellus SC', serif;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "navbar";
-@import "external";
+
+
+body {
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
 
 nav {
   font-family: 'Marcellus SC', serif;
@@ -27,6 +32,37 @@ nav {
   transform: scale(1.1, 1.1);
   // font-size: 115%;
 }
+
+.profile-pic {
+  width: 300px;
+}
+
+.panel {
+  margin-top: 20px;
+}
+
+.discussions-box {
+  background-color: #ffcd83;
+  padding: 20px;
+}
+
+.tasks-box {
+  background-color: #aeff7f;
+  padding: 20px;
+}
+
+.other-box {
+  background-color: #fb6eff;
+  padding: 20px;
+}
+
+.form-box {
+  background-color: #585aff;
+  padding: 20px;
+}
+
+
+
 
 
 

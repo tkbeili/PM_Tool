@@ -23,7 +23,15 @@ class Project < ActiveRecord::Base
     if user
       user.first_name 
     else
-      return "Retardo Maltoban"
+      return "Private"
+    end
+  end
+
+  def user_full_name
+    if user
+      "#{user.first_name} #{user.last_name}"
+    else
+      return "Private Manager"
     end
   end
 
