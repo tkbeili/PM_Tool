@@ -33,6 +33,11 @@ nav {
   // font-size: 115%;
 }
 
+.pm-list {
+  display: inline;
+  padding-right: 15px;
+}
+
 .profile-pic {
   width: 300px;
 }
@@ -41,14 +46,30 @@ nav {
   margin-top: 20px;
 }
 
+.project-buttons {
+  padding-top: 12px;
+  padding-right: 15px;
+  float: right;
+}
+
+.discussion-task {
+  width: 100%;
+}
+
 .discussions-box {
-  background-color: #ffcd83;
-  padding: 20px;
+  // position: relative;
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  // float: left;
 }
 
 .tasks-box {
-  background-color: #aeff7f;
-  padding: 20px;
+  // position: relative;
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  // float: right;
 }
 
 .other-box {

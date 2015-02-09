@@ -6,12 +6,10 @@
   </ul>
 <% end %>
 
-<%= simple_form_for([@project, @discussion], remote: true) do |f| %>
+<%= simple_form_for [@project, @discussion], remote: true do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.input :title, input_html: {class: "form-control"} %>
+    <%= f.input :description, input_html: {class: "form-control"} %>
   </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %> 

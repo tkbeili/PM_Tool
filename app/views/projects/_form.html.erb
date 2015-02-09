@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= simple_form_for(@project, html: { class: 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@project) do |f| %>
   <div class="form-group">
     <%= f.input :title, label: "Title", input_html: {class: "form-control"} %>
   </div>
