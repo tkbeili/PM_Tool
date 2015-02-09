@@ -1,7 +1,33 @@
 /*
 *= require animate
+*= require_self
 */
+
+@import url(http://fonts.googleapis.com/css?family=Marcellus+SC|Marcellus);
+
+$brand-primary: #1469EB;
+$border-radius-base: 0px;
+$font-family-sans-serif: 'Marcellus', serif;
+$headings-font-family: 'Marcellus SC', serif;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+@import "navbar";
 @import "external";
+
+nav {
+  font-family: 'Marcellus SC', serif;
+}
+
+#navbar li:hover {
+  background-color: #1759C4;
+}
+
+#navbar li a:hover {
+  transform: scale(1.1, 1.1);
+  // font-size: 115%;
+}
+
+
+
+
