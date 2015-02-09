@@ -20,7 +20,7 @@
     <td><h4><%= link_to project.title, project_path(project) %></h4>
       <p><%= project.description.truncate(80) %></p></td>
     <td><%= project.user_full_name %></td>
-    <td><%= project.due_date %></td>
+    <td><%= delivery_date(project.due_date) %></td>
   </tr>
 <% end %>
 

@@ -18,6 +18,7 @@ $headings-font-family: 'Marcellus SC', serif;
 body {
   padding-top: 50px;
   margin-bottom: 50px;
+  background-color: white;
 }
 
 nav {
@@ -29,7 +30,7 @@ nav {
 }
 
 #navbar li a:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.05, 1.05);
   // font-size: 115%;
 }
 
@@ -45,6 +46,11 @@ nav {
 .panel {
   margin-top: 20px;
 }
+
+.pan-mar {
+  margin-top: 79px;
+}
+
 
 .project-buttons {
   padding-top: 12px;
@@ -72,14 +78,12 @@ nav {
   // float: right;
 }
 
-.other-box {
-  background-color: #fb6eff;
-  padding: 20px;
+.not-done-box {
+
 }
 
-.form-box {
-  background-color: #585aff;
-  padding: 20px;
+.done-box {
+
 }
 
 

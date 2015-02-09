@@ -1,4 +1,4 @@
-<h2>Show Favourites....</h2>
+<h2>Favourited Projects</h2>
 
 <% @favourites.each do |favourite| %>
   <p><%= link_to favourite.project.title, project_path(favourite.project) %></p>

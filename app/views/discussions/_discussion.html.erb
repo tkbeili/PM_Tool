@@ -1,7 +1,9 @@
 <div id="<%= dom_id(discussion) %>">
   <div class="well well-sm">
     <h4><%= link_to discussion.title, [@project, discussion] %></h4>
-    <p><%= discussion.description %></p>
-    <p><%= link_to "delete", project_discussion_path(@project, discussion), method: :delete, data: {confirm: "Are you use you want to delete this Discussion?"}, class: "btn btn-sm btn-danger", remote: true %></p>
+    <p><%= (discussion.description).truncate(120) %></p>
+    <p>Created By: <%= (discussion.user).first_name %> on <%= standard_date(discussion.created_at) %></p>
+    <p>Comments: <%= discussion.comments.count %></p>
+    <p><%= link_to "delete", project_discussion_path(@project, discussion), method: :delete, data: {confirm: "Are you use you want to delete this Discussion?"}, class: "btn btn-xs btn-danger", remote: true %></p>
   </div>
 </div>
