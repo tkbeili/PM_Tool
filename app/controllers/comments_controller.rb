@@ -33,7 +33,6 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     if @comment.update params.require(:comment).permit(:body)
-      # byebug
       redirect_to project_discussion_path(@comment.project, @comment.discussion)
     else
       flash[:error] = "Body cannot be empty"
@@ -44,11 +43,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find params[:id]
-    if @comment.user == current_user && @comment.destroy
-      redirect_to project_discussion_path(@comment.project, @comment.discussion)
-    else
-      flash[:error] = "You cannot delete a comment you did not create"
-      redirect_to project_discussion_path(@comment.project, @comment.discussion)
+    respond_to do |format|
+      if @comment.user == current_user && @comment.destroy
+        format.js {render}
+        format.html {redirect_to project_discussion_path(@comment.project, @comment.discussion), notice: "DELETED"}
+      else
+        format.js {render js: "alert('Durppy Derp');"}
+        format.html {redirect_to project_discussion_path(@comment.project, @comment.discussion), notice: "You cannot delete a comment you did not create"}
+      end
     end
     # render text: params
   end

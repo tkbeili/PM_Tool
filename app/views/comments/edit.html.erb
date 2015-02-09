@@ -1,7 +1,12 @@
-<%= form_for([@discussion, (@comment || Comment.new)]) do |f| %>
-  <div class="form-group">
-  <%= f.label :body %>
-  <%= f.text_field :body, class: "form-control" %>
-  <%= f.submit class: "btn btn-primary" %>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <%= form_for([@discussion, (@comment || Comment.new)]) do |f| %>
+      <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_field :body, class: "form-control" %>
+      <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+<p>this is edit.html.erb</p>
