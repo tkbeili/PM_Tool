@@ -1,0 +1,2 @@
+$(".update-comment").children().hide();
+$(".update-comment").prepend("<%= j render '/comments/edit', locals: {comment: @comment} %>");

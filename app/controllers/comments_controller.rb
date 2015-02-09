@@ -32,11 +32,15 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find params[:id]
-    if @comment.update params.require(:comment).permit(:body)
-      redirect_to project_discussion_path(@comment.project, @comment.discussion)
-    else
-      flash[:error] = "Body cannot be empty"
-      redirect_to edit_discussion_comment_path(@comment.discussion, @comment)
+    respond_to do |format|
+      if @comment.update params.require(:comment).permit(:body)
+        format.html {redirect_to project_discussion_path(@comment.project, @comment.discussion)}
+        format.js {render}
+      else
+        # flash[:error] = "Body cannot be empty"
+        format.html {redirect_to edit_discussion_comment_path(@comment.discussion, @comment)}
+        format.js {render}
+      end
     end
     # render text: params
   end
