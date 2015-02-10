@@ -3,6 +3,35 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 body {
   background-color: #E0DCFF;
 }
+
+.home-container {
+  height: 510px;
+  position: relative;
+}
+
+.cc-logo {
+  width: 500px;
+}
+
+.logo-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // padding: 20px;
+  // border-radius: 20px;
+  // background-color: rgba(255,255,255,0.2);
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      color: black;
+      margin: 0;
+    }
+}
+
+
+
