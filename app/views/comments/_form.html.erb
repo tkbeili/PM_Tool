@@ -1,0 +1,8 @@
+<%= simple_form_for([@discussion, (@comment || Comment.new)], remote: true) do |f| %>
+  <div class="form-group">
+    <h4>Add a Comment</h4>
+    <%= f.input :body, input_html: {:rows => 3, class: "form-control"} %>
+    <br>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

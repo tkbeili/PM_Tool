@@ -1,0 +1,15 @@
+<% if @discussion.errors.any? %>
+  <ul>
+    <% @discussion.errors.full_messages.each do |msg| %>
+    <li><h4><%= msg %></h4></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= simple_form_for [@project, @discussion], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.input :title, input_html: {class: "form-control"} %>
+    <%= f.input :description, input_html: {class: "form-control"} %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %> 

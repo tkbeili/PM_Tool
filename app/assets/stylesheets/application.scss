@@ -1,0 +1,96 @@
+/*
+*= require animate
+*= require_self
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Marcellus+SC|Permanent+Marker|Marcellus);
+
+$brand-primary: #1469EB;
+$border-radius-base: 0px;
+$font-family-sans-serif: 'Marcellus', serif;
+$headings-font-family: 'Marcellus SC', serif;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "navbar";
+
+
+body {
+  padding-top: 50px;
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+nav {
+  font-family: 'Marcellus SC', serif;
+}
+
+#navbar li:hover {
+  background-color: #1759C4;
+}
+
+#navbar li a:hover {
+  transform: scale(1.05, 1.05);
+  // font-size: 115%;
+}
+
+.pm-list {
+  display: inline;
+  padding-right: 15px;
+}
+
+.panel {
+  margin-top: 20px;
+}
+
+.pan-mar {
+  margin-top: 79px;
+}
+
+.project-buttons {
+  padding-top: 12px;
+  padding-right: 15px;
+  float: right;
+}
+
+.discussion-task {
+  width: 100%;
+}
+
+.discussions-box {
+  // position: relative;
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  // float: left;
+}
+
+.tasks-box {
+  // position: relative;
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  // float: right;
+}
+
+.not-done-box {
+
+}
+
+.done-box {
+
+}
+
+
+
+
+
+
+

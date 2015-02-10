@@ -1,0 +1,25 @@
+<p>Hello <%= @user.first_name %>,</p>
+
+<% if @tasks.count > 0 %>
+  <p>Here are the new tasks that were created today for your projects.</p>
+    <table style="text-align: left;">
+      <col width="200">
+      <col width="300">
+      <tr>
+        <th>Project</th>
+        <th>Task</th>
+      </tr>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.project.title %></td>
+          <td><%= task.title %></td>
+        </tr>
+      <% end %>
+    </table>
+<% else %>
+  <p>Sorry, you do not have any upadates on your projects.</p>
+<% end %>
+
+<p>Cheers,</p>
+
+<p>The Tool PM</p>

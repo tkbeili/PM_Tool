@@ -1,0 +1,25 @@
+<p>Hello <%= @user.first_name %>,</p>
+
+<% if @discussions.count > 0 %>
+  <p>Here are the new discussions that were created today for your projects.</p>
+    <table style="text-align: left;">
+      <col width="200">
+      <col width="300">
+      <tr>
+        <th>Project</th>
+        <th>Discussion</th>
+      </tr>
+      <% @discussions.each do |discussion| %>
+        <tr>
+          <td><%= discussion.project.title %></td>
+          <td><%= discussion.title %></td>
+        </tr>
+      <% end %>
+    </table>
+<% else %>
+  <p>Sorry, you do not have any upadates on your projects.</p>
+<% end %>
+
+<p>Cheers,</p>
+
+<p>The Tool PM</p>

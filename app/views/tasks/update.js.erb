@@ -1,0 +1,21 @@
+var theTask = $("#<%= dom_id(@task) %>")
+$("#<%= dom_id(@task) %>").hide();
+$("#<%= dom_id(@task) %>").fadeIn("slow");
+
+<% if @task.status == true %>
+  $(".complete").prepend(theTask);
+  var done = $("#<%= dom_id(@task) %> .btn").last().attr('href').replace("true", "false");
+  $("#<%= dom_id(@task) %> .btn").last().attr('href', done);
+  $("#<%= dom_id(@task) %> .btn").text(" Completed");
+  $("#<%= dom_id(@task) %> .btn").removeClass("btn-danger").removeClass("glyphicon-fire");
+  $("#<%= dom_id(@task) %> .btn").addClass("btn-success").addClass("glyphicon-check");
+<% else %>
+  $(document).ready(function(){
+    $(".incomplete").append(theTask);
+    var notDone = $("#<%= dom_id(@task) %> .btn").last().attr('href').replace("false", "true");
+    $("#<%= dom_id(@task) %> .btn").last().attr('href', notDone);
+    $("#<%= dom_id(@task) %> .btn").text(" Incomplete");
+    $("#<%= dom_id(@task) %> .btn").removeClass("btn-success").removeClass("glyphicon-check");
+    $("#<%= dom_id(@task) %> .btn").addClass("btn-danger").addClass("glyphicon-fire");
+  });
+<% end %>

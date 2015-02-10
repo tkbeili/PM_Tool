@@ -1,0 +1,25 @@
+<h3>Edit Your Comment</h3>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <%= form_for([@discussion, (@comment || Comment.new)], remote: true) do |f| %>
+      <div class="form-group">
+      <%= f.label "Comment Body" %>
+      <%= f.text_area :body, class: "form-control", :rows => 3 %>
+      <br>
+      <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="update">
+</div>
+
+<div class="update-comment">
+  <div class="well well-sm">
+    <h4>Your Comment</h4>
+    <p><%= @comment.body %></p>
+    <p>Created By: <%= @comment.user.first_name %></p>
+    <p>Updated On: <%= standard_date(@comment.updated_at) %></p>
+  </div>
+</div>

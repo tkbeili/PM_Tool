@@ -1,0 +1,34 @@
+<% if @project.errors.any? %>
+  <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+    <li><h3><%= msg %></h3></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= simple_form_for(@project) do |f| %>
+  <div class="form-group">
+    <%= f.input :title, label: "Title", input_html: {class: "form-control"} %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.input :description, label: "Description", input_html: {:rows => 5, class: "form-control"} %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.input :due_date, as: :date, html5: true %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.association :tags, as: :check_boxes %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.association :project_members, as: :check_boxes, label_method: :full_name %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= f.button :button, 'Cancel', :type => 'reset', :class => "btn btn-warning" %>
+  </div>
+<% end %>

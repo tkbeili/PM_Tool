@@ -1,0 +1,20 @@
+<h2>Tasks List</h2>
+
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Task</td>
+        <td>Due Date</td>
+        <td>Status</td>
+      </tr>
+    </thead>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= link_to task.title, edit_task_path(task) %></td>
+      <td><%= task.due_date %></td>
+      <td>In Progress</td>
+    </tr>
+    <% end %>
+  </table>
+</div>
