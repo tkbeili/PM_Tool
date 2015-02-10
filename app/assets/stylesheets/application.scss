@@ -10,6 +10,13 @@ $border-radius-base: 0px;
 $font-family-sans-serif: 'Marcellus', serif;
 $headings-font-family: 'Marcellus SC', serif;
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "navbar";
